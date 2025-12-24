@@ -6,6 +6,5 @@ endpoints:
         basePath: /
         port: 8000
       type: REST
-      networkVisibilities:
-        - Project
-        - Public
+      networkVisibilities: Public
+      schemaFilePath: endpoints.yaml
