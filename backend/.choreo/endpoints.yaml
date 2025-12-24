@@ -7,17 +7,16 @@ endpoints:
       # This name will be used when generating the managed API
     - name: books-rest-endpoint-d70
       # +optional Display name for the endpoint.
-      displayName: Books REST Endpoint
+      displayName: REST API
       # +required Service section has the user service endpoint details
       service:
         # +optional Context (base path) of the API that gets exposed via the endpoint.
-        basePath: /reading-list
+        basePath: /
         # +required Numeric port value that gets exposed via the endpoint
-        port: 8080
+        port: 8000
         # +required Type of traffic that the endpoint is accepting.
       type: REST
       # +optional Network level visibilities of the endpoint.
       networkVisibilities:
         - Project
         - Public
-      schemaFilePath: endpoints.yaml
