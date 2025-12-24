@@ -1,22 +1,28 @@
-# +required The configuration file schema version
 schemaVersion: "1.2"
 
-# +optional Incoming connection details for the component
 endpoints:
-      # +required Unique name for the endpoint.
-      # This name will be used when generating the managed API
-    - name: books-rest-endpoint-d70
-      # +optional Display name for the endpoint.
-      displayName: REST API
-      # +required Service section has the user service endpoint details
-      service:
-        # +optional Context (base path) of the API that gets exposed via the endpoint.
-        basePath: /
-        # +required Numeric port value that gets exposed via the endpoint
-        port: 8000
-        # +required Type of traffic that the endpoint is accepting.
-      type: REST
-      # +optional Network level visibilities of the endpoint.
-      networkVisibilities:
-        - Project
-        - Public
+  - name: books-rest-endpoint-d70
+    displayName: Django REST API
+    service:
+      basePath: /
+      port: 8000  # Django default port
+    type: REST
+    networkVisibilities:
+      - Project
+      - Public
+    # TAMBAH build configuration
+    build:
+      language: python
+      version: "3.11"
+      commands:
+        build:
+          - pip install -r requirements.txt
+          - python manage.py collectstatic --noinput
+        run:
+          command: 
+            - gunicorn
+            - backend.wsgi:application
+            - --bind
+            - 0.0.0.0:8000
+            - --workers
+            - "3"
