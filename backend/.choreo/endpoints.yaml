@@ -1,11 +1,13 @@
 schemaVersion: "1.2"
+version: "1.0"  # ✅ TAMBAH field version
 
 endpoints:
   - name: django-api
-    displayName: Django API
+    displayName: Django REST API
     service:
       basePath: /
-      port: 8000  # Choreo akan set PORT environment variable
+      port: 8000  # ✅ Port di dalam service
     type: REST
     networkVisibilities:
-    - Public
+      - Project
+      - Public
