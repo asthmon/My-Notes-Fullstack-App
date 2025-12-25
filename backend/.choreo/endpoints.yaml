@@ -1,7 +1,11 @@
-version: 0.1
+schemaVersion: "1.2"
 
 endpoints:
-  - name: "flask-application"
-    port: 8000
+  - name: django-api
+    displayName: Django API
+    service:
+      basePath: /
+      port: 8000  # Choreo akan set PORT environment variable
     type: REST
-    networkVisibility: Public
+    networkVisibilities:
+    - Public
