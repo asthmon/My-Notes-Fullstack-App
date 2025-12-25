@@ -1,8 +1,7 @@
-schemaVersion: "1.2"
+version: 0.1
 
 endpoints:
-  - name: "REST API"
+  - name: "flask-application"
     port: 8000
     type: REST
     networkVisibility: Public
-    context: /
