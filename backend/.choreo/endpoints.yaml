@@ -1,28 +1,12 @@
 schemaVersion: "1.2"
 
 endpoints:
-  - name: books-rest-endpoint-d70
-    displayName: Django REST API
+  - name: django-api
+    displayName: Django API
     service:
       basePath: /
-      port: 8000  # Django default port
+      port: 8000  # Choreo akan set PORT environment variable
     type: REST
     networkVisibilities:
-      - Project
-      - Public
-    # TAMBAH build configuration
-    build:
-      language: python
-      version: "3.11"
-      commands:
-        build:
-          - pip install -r requirements.txt
-          - python manage.py collectstatic --noinput
-        run:
-          command: 
-            - gunicorn
-            - backend.wsgi:application
-            - --bind
-            - 0.0.0.0:8000
-            - --workers
-            - "3"
+    - Public
+    - Project
