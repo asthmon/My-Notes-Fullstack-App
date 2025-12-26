@@ -5,6 +5,7 @@ endpoints:
       service:
         basePath: /
         port: 8000
+        targetPort: 8080
       type: REST
       networkVisibilities:
         - Project
